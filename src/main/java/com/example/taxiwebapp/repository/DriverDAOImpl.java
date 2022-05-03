@@ -103,6 +103,6 @@ public class DriverDAOImpl implements DriverDAO {
 		ride.setDriver_username(driver_username);
 		session.update(ride);
 		session.getTransaction().commit();
-		
+		session.close();
 	}
 }

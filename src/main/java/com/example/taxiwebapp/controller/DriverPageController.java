@@ -65,9 +65,10 @@ public class DriverPageController {
     
 	}
 	@RequestMapping(value="/login/driverpage/confirmride", method = RequestMethod.GET)
-    public String showConfirmRidePage(ModelMap model, @RequestParam int booking_id){
+    public String showConfirmRidePage(@SessionAttribute("loging") Login login,ModelMap model, @RequestParam int booking_id){
         model.put("booking_id", booking_id);
         BookRide ride=driverDTO.getRideDetailsById(booking_id);
+        model.put("username", login.getUsername());
         model.addAttribute("ride_details", ride);
 		return "/login/driverpage/confirmride";
     }

@@ -1,5 +1,6 @@
 package com.example.taxiwebapp.controller;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -47,7 +48,14 @@ public class UserPageController {
     public String showUserStatusPage(ModelMap model,@SessionAttribute("loging") Login login){
 		model.put("username", login.getUsername());
 		List<BookRide> rides=userDTO.getRidesBookedByUser(login.getUsername());
+		if(rides.isEmpty())
+		{
+			model.put("ride",null);
+		}
+		else
+		{
 		model.addAttribute("ride", rides.get(0));
+		}
         return "/login/userpage/status";
     }
 	@RequestMapping(value="/login/userpage/ride", method = RequestMethod.POST)

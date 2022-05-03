@@ -90,6 +90,7 @@ public class UserDAOImpl implements UserDAO{
 		session.beginTransaction();
 		session.save(ride);
 		session.getTransaction().commit();
+		session.close();
 		}
 
 
@@ -116,7 +117,7 @@ public class UserDAOImpl implements UserDAO{
 		//ride.setDriver_username(driver_username);
 		session.update(ride);
 		session.getTransaction().commit();
-		
+		session.close();
 	}
 
 

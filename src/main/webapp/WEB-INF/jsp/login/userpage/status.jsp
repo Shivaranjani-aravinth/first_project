@@ -69,6 +69,9 @@ button {
 </div>
 <br>
 <c:choose>
+<c:when test="${ride == null }">
+No Rides Booked Yet! 
+</c:when>
 <c:when test="${ride.driver_username == null}">
 Waiting for Driver to get assigned <br>
 check after some time!!!
